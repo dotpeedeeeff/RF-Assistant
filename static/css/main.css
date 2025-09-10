@@ -1,0 +1,82 @@
+body {
+    background-image: url(../background.avif);
+    background-position: center;
+    border-radius: 10px;
+    margin: auto;
+}
+
+
+
+.container {
+        
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 95%;
+    max-width: 600px;
+    background-color: rgba(65, 58, 155, 0.8);
+    border-radius: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: azure;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.input {
+    
+    width: 45%;
+    float: left;
+    margin: 10px;
+    background-color: rgba(65, 58, 155, 0.8);
+    border-radius: 15px;
+}
+
+.output {
+    
+    width: 45%;
+    float: right;
+    margin: 10px;
+    background-color: rgba(65, 58, 155, 0.8);
+    border-radius: 15px;
+}
+
+input {
+    display: block;
+}
+
+.label {
+    text-align: left;
+    display: block;
+    font-size: 18px;
+}
+
+header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    max-width: 600px;
+    background-color: rgba(65, 58, 155, 0.8);
+    border-radius: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: azure;
+    margin-bottom: 15px;
+}
+
+fieldset {
+    border: none;    
+}
+legend {
+    font-size: 22px;
+}
+
+.dropdown {
+float: left;
+display: block;
+}
+
+.button {
+    margin-bottom: 15px;
+    
+    }

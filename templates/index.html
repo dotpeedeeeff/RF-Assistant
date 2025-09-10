@@ -3,73 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>Frequency Calculation Tool</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
-    <script src="./js/script.js"></script>
     <header>
         <h1>LC Frequency Calculator</h1>
         <p>Enter the Inductance, Capacitance and let the calculator work out the output frequency.</p>
+        <form action="home">
+            <button class="button">Home</button>
+        </form> 
     </header>
     <main>
         <div class="container">
-        <form id="mainform" action="freq" method="post" name="inputForm">
-            <fieldset>
-                <legend>Input</legend>
-                <label for="inductance">Inductance</label>
-                <input required id="inductance" name="inductance" step="0.1" type="number" min="0" max="1000">
-                <label for="prefixhenries">L Units</label>                
-                <select id="prefixhenries" name="prefixhenries">                    
-                    <option value="mH">mH</option>
-                    <option value="uH" selected="selected">uH</option>                    
-                </select>
-                <label for="startcapacitance">Start Capacitance</label>
-                <input required id="startcapacitance" name="startcapacitance" type="number" min="0" step="0.1" max="1000">
-                <label for="stopcapacitance">End Capacitance</label>
-                <input required id="stopcapacitance" name="stopcapacitance" type="number" min="0" step="0.1" max="1000" onchange="valCheck()">
-                <label for="capacitancestep">Capacitance Step</label>
-                <input required id="capacitancestep" name="capacitancestep" type="number" min="0"  step="0.1" max="1000">
-                <label for="prefixcapacitance">C Units</label>
-                <select id="prefixcapacitance" name="prefixcapacitance">
-                    <option disabled value="mF">mF</option>
-                    <option value="uF">uF</option>
-                    <option value="nF">nF</option>
-                    <option value="pF" selected="selected">pF</option>
-                </select>               
-                <input type="submit" value="Submit" id="submit"></button>
-            </fieldset>
-            <fieldset>
-                <output>
-                    
-                    <p>{{message}}</p>
+            <form id="mainform" action="freq" method="post" name="inputForm">
+                <div class="input">
+                    <fieldset>
+                        <legend>Input</legend>                
+                        <label for="inductance" class="label">Inductance (uH)</label>
+                        <input required id="inductance" class="tfield" name="inductance" value="22" step="0.1" type="number" min="0" max="1000">
+                        
+                        <!-- <label for="prefixhenries" class="label">L Units</label>                
+                        <select id="prefixhenries" name="prefixhenries" class="dropdown">                    
+                            <option value="mH">mH</option>
+                            <option value="uH" selected="selected">uH</option>                    
+                        </select> -->
+                        
+                        <label for="startcapacitance" class="label">Start Capacitance (pF)</label>
+                        <input required id="startcapacitance" name="startcapacitance" value="100" type="number" min="1" step="1" max="1000" onchange="stopCheck()">
+                        
+                        <label for="stopcapacitance" class="label">End Capacitance (pF)</label>
+                        <input id="stopcapacitance" name="stopcapacitance" value="200" type="number" value="0" min="0" step="1" max="1000" onchange="stopCheck()">
+                        
+                        <label for="capacitancestep" class="label">Capacitance Step</label>
+                        <input id="capacitancestep" name="capacitancestep" type="number" value="5" min="0"  step="1" max="1000" onchange="stepCheck()">
+                        
+                        <!-- <label for="prefixcapacitance" class="label">C Units</label>
+                        <select id="prefixcapacitance" name="prefixcapacitance" class="dropdown">
+                            <option disabled value="mF">mF</option>
+                            <option value="uF">uF</option>
+                            <option value="nF">nF</option>
+                            <option value="pF" selected="selected">pF</option>
+                        </select>    -->     
+                        <input type="submit" value="Submit" id="submit" class="button"></button>
+                        <p id="stopcheck"></p>
+                        <p id="stepcheck"></p>
+                    </fieldset>
+                </div>
+            <div class="output">
+                <fieldset>
+                    <legend>Output</legend>
+                    <output>                 
+                        <p>{{message}}</p>
 
-                    <ul> 
-                        <!-- For loop logic of jinja template -->
-                        {%for i in range(0, len)%} 
-                          
-                            <li>{{output[i]}}</li> 
-                        {%endfor%} 
-                          
-                    </ul> 
-                </output>                
-            </fieldset>
-        </form>
-    </div>
+                        <ul> 
+                            <!-- For loop logic of jinja template -->
+                            {%for i in range(0, len)%} 
+                            
+                                <li>{{output[i]}}</li> 
+                            {%endfor%} 
+                            
+                        </ul> 
+                    </output>                
+                </fieldset>
+            </div>
+            </form>
+        </div>
         
     </main>   
-    <script>
+    
 
-        function valCheck(){
-            capStart = document.getElementById("startcapacitance").value
-            capStop = document.getElementById("stopcapacitance").value
+    </body>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
 
-            
-
-            if (valStop < valStart) {alert("Capacitance stop is less than starting capacitance")}
-
-        }
-
-    </script>
-
-</body>
 </html>

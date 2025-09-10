@@ -1,74 +1,95 @@
 import math
 
+def resonant_frequency_calc(inductance: float, capacitance: float) -> float:
+    """
+    Resonant frequency calculator.
+    Returns result scaled to kHz.
+    """
+    frequency = 1 / ((2 * math.pi) * (math.sqrt(inductance * capacitance)))
+    frequency = round(frequency, 0)
+    frequency = frequency / 1000
+    frequency = int(frequency)
+    frequency = str(frequency) + " kHz"
+    return frequency
 
-class RFfun:
 
-    def find_freq(inductance, capacitance):
-        # Resonant frequency calculator
-        freq = 1 / ((2 * math.pi) * (math.sqrt(inductance * capacitance)))
-        freq = round(freq, 0)
-        freq = freq / 1000
-        freq = int(freq)
-        freq = str(freq) + " kHz"
-        return freq
+def convert_to_farads(user_capacitance: float, capacitance_suffix: str) -> float:
+    """"
+    Converters capacitance value with SI suffix to Farads.
+    """
+    si_c_suffixes = {
+        "pF": 1E-12,
+        "nF": 1E-9,
+        "uF": 1E-6
+    }
 
-    def conv_cap(C, Csuff):
-        # Looks up SI suffix for capacitance
-        cap_suffix = {
-            "pF": 1E-12,
-            "nF": 1E-9,
-            "uF": 1E-6
-        }
-        cap = C * (cap_suffix[Csuff])
-        return cap
+    farad_capacitance = user_capacitance * (si_c_suffixes[capacitance_suffix])
+    return farad_capacitance
 
-    def conv_ind(L, Lsuff):
-        # Looks up SI suffix for inductance
-        ind_suffix = {
-            "uH": 1E-6,
-            "mH": 1E-3
-        }
-        ind = L * (ind_suffix[Lsuff])
-        return ind
 
-    def cap_array(cap_start, cap_stop, cap_step):
+def convert_to_henries(user_inductance: float, inductance_suffix: str) -> float:
+    """
+    Converts inductance value with SI suffix to Henries.
+    """
+    si_l_suffixes = {
+        "uH": 1E-6,
+        "mH": 1E-3
+    }
+    henry_inductance = user_inductance * (si_l_suffixes[inductance_suffix])
+    return henry_inductance
 
-        # Generate array of capacitances based on user input
-        out_array = []
-        cap_current = cap_start
 
-        while cap_current < cap_stop:
-            out_array.append(cap_current)
+def generate_capacitance_array(start_capacitance: int, stop_capacitance: int, capacitance_step: int) -> list:
+    """
+    Generate array of capacitances from start, stop and step inputs.
+    """
+    stepped_capacitance_array = []
+    current_capacitance = start_capacitance    
+    
+    if capacitance_step == 0:
+        return [start_capacitance]
+    
+    if stop_capacitance < start_capacitance:
+        return [start_capacitance]
 
-            if (cap_current + cap_step) >= cap_stop:
-                out_array.append(cap_stop)
-            cap_current += cap_step
-            if cap_current <= 100:
-                cap_current = round(cap_current, 1)
-        return out_array
+    while current_capacitance < stop_capacitance:
 
-    def find_freqency_array(cap_array_out, ind_real, cap_suff):
-        freq_array_out = []
-        for i in range(len(cap_array_out)):
-            # Calculate frequency for each capacitance value in array
-            cap_iter = cap_array_out[i]
-            cap_iter = RFfun.conv_cap(cap_iter, cap_suff)
-            freq_iter = RFfun.find_freq(ind_real, cap_iter)
-            freq_array_out.append(freq_iter)
-        return freq_array_out
+        stepped_capacitance_array.append(current_capacitance)
+        current_capacitance += capacitance_step
 
-    def prepare_final_output(cap_array_out, freq_array_out, cap_suff):
-        final_array_out = []
-        for i in range(len(cap_array_out)):
-            # Prepare final string for rendering
-            final_iter = str(cap_array_out[i]) + "" + cap_suff + "" + (freq_array_out[i])
-            final_array_out.append(final_iter)
-        return final_array_out
+    if not stepped_capacitance_array or stepped_capacitance_array[-1] != stop_capacitance:
+        stepped_capacitance_array.append(stop_capacitance)
 
-    def freq_finder(user_indu, ind_suffix, cap_start, cap_stop, cap_step, cap_suff):
-        # main function that takes user inputs and returns array of cap/freq pairs
-        real_ind = RFfun.conv_ind(user_indu, ind_suffix)
-        cap_array = RFfun.cap_array(cap_start, cap_stop, cap_step)
-        freq_array = RFfun.find_freqency_array(cap_array, real_ind, cap_suff)
-        final_out = RFfun.prepare_final_output(cap_array, freq_array, cap_suff)
-        return final_out
+    return stepped_capacitance_array
+
+
+def generate_frequency_array(stepped_capacitance_array: float, henry_inductance: float, capacitance_suffix: str) -> list:
+    frequency_output_array = []
+    for i in range(len(stepped_capacitance_array)):
+        """
+        Calculate frequency for each capacitance value in array.
+        """       
+        current_capacitance_iteration = stepped_capacitance_array[i]
+        current_capacitance_iteration = convert_to_farads(current_capacitance_iteration, capacitance_suffix)
+        current_frequency_iteration = resonant_frequency_calc(henry_inductance, current_capacitance_iteration)
+        frequency_output_array.append(current_frequency_iteration)
+    return frequency_output_array
+
+
+def prepare_final_output(stepped_capacitance_array, frequency_output_array, capacitance_suffix):
+    final_array_out = []
+    for i in range(len(stepped_capacitance_array)):
+        # Prepare final string for rendering
+        final_iter = str(stepped_capacitance_array[i]) + " " + capacitance_suffix + " " + (frequency_output_array[i])
+        final_array_out.append(final_iter)
+    return final_array_out
+
+
+def final_frequency_calculcator(user_inductance, inductance_suffix, start_capacitance, stop_capacitance, capacitance_step, capacitance_suffix):
+    # main function to output frequency array
+    henry_inductance = convert_to_henries(user_inductance, inductance_suffix)
+    stepped_capacitance_array = generate_capacitance_array(start_capacitance, stop_capacitance, capacitance_step)
+    frequency_output_arr = generate_frequency_array(stepped_capacitance_array, henry_inductance, capacitance_suffix)
+    final_array_out = prepare_final_output(stepped_capacitance_array, frequency_output_arr, capacitance_suffix)
+    return final_array_out
+

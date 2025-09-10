@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>RF Toolbox Homepage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Calculators for RF circuits.">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+
+    </head>
+    <body>
+        <div class="container">
+            <h1>RF Circuit Toolbox</h1>
+            <p>A selection of tools to help with common RF calculations.</p>
+            <form action="lc">
+                <button class="button">LC Resonant Frequency</button>
+            </form>
+            <form action="creact">
+                <button class="button">Capacitative Reactance</button>
+            </form>
+            <form action="lreact">
+                <button class="button"> Inductive Reactance</button>
+            </form>
+        </div>
+    </body>
+</html>
