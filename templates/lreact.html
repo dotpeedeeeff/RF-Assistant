@@ -8,10 +8,41 @@
         <meta name="description" content="ind the inductive reactance for a given frequency.">
     </head>
     <body>
+        <header>
         <h1>Inductive Reactance Calculator</h1>
         <p>Find the inductive reactance for a given frequency.</p>
-        <form action="home">
+        <form action="/">
             <button class="button">Home</button>
-        </form>             
+        </form>
+        </header>
+        <main>
+           <div class="container">
+            <form id="mainform" action="lresults" method="post" name="inputForm">
+            <div class="input">
+            <fieldset>
+                <legend>Input</legend>
+                <label for="Inductance">Inductance</label>
+                <input required id="inductance" name="inductance" type="number" min="0" step="0.1" max="1000">
+                <label for="suffixinductance">L Units</label>
+                <select id="suffixinductance" name="suffixinductance">
+                    <option disabled value="H">H</option>
+                    <option value="mH">mH</option>
+                    <option value="uH" selected="selected">uH</option>
+                </select>             
+                <label for="Frequency">Frequency (kHz)</label>
+                <input id="frequency" name="frequency" type="number"> 
+                <input type="submit" value="Submit" id="submit"></button>              
+            </fieldset>
+        </div>
+        <div class="output">
+            <fieldset>                
+                <output>                 
+                    <p>{{message}}</p>
+                </output>                
+            </fieldset>
+        </div>
+        </form>
+        </div> 
+        </main>             
     </body>
 </html>

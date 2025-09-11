@@ -15,7 +15,7 @@ def hello():
 def lc():
     return render_template("index.html", len=0, output=0)
 
-@app.route("/home")
+@app.route("/")
 def home():
     return render_template("home.html", len=0, output=0)
 
@@ -23,11 +23,34 @@ def home():
 def creact():
     return render_template("creact.html", len=0, output=0)
 
+@app.route("/cresults", methods=["POST", "GET"])
+def cresults():
+    user_capacitance = float(request.form['capacitance'])
+    capacitance_suffix = str(request.form['suffixcapacitance'])
+    frequency = float(request.form['frequency'])
+    
+    print("=== FORM DATA DEBUG ===")
+    
+    print(f"request.form: {dict(request.form)}")        
+    print("capacitance is", user_capacitance)
+    print("capsuffix is ", capacitance_suffix)
+    print("frequency is ", frequency)
+
+    reactance_output = rf.capacitive_reactance_calculator(user_capacitance, capacitance_suffix, frequency)
+    reactance_output = str(reactance_output)
+
+    capacitance = "Capacitance: " + str(user_capacitance) + " " + capacitance_suffix
+    frequency = "Frequency: "  + str(int(frequency)) + " kHz"
+    message = "Capacitive Reactance is: " + reactance_output + " Ω"
+
+
+
+    return render_template("creact.html", len=0, output=0, message=message, frequency=frequency, capacitance=capacitance)
+
+
 @app.route("/lreact")
 def lreact():
-    return render_template("lreact.html", len=0, output=0)
-
-
+    return render_template("lreact.html", len=0, output=0)    
 
 @app.route("/freq", methods=["POST", "GET"])
 def freq_display():
@@ -47,7 +70,7 @@ def freq_display():
     print("stopcap is ", stop_capacitance)
 
 
-    message = "For Inductance of " + str(user_inductance) + " pF"
+    message = "For Inductance of " + str(user_inductance) + " uH"
     
     output = rf.final_frequency_calculcator(user_inductance, inductance_suffix, start_capacitance, stop_capacitance, capacitance_step, capacitance_suffix)
     return render_template("index.html", len=len(output), output=output, message=message) 

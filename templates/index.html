@@ -11,7 +11,7 @@
     <header>
         <h1>LC Frequency Calculator</h1>
         <p>Enter the Inductance, Capacitance and let the calculator work out the output frequency.</p>
-        <form action="home">
+        <form action="/">
             <button class="button">Home</button>
         </form> 
     </header>
@@ -37,7 +37,7 @@
                         <input id="stopcapacitance" name="stopcapacitance" type="number" value="0" min="0" step="1" max="1000" onchange="stopCheck()">
                         
                         <label for="capacitancestep" class="label">Capacitance Step</label>
-                        <input id="capacitancestep" name="capacitancestep" type="number" min="0"  step="1" max="1000" onchange="stepCheck()">
+                        <input id="capacitancestep" name="capacitancestep" type="number" min="0" value="0" step="1" max="1000" onchange="stepCheck()">
                         
                         <!-- <label for="prefixcapacitance" class="label">C Units</label>
                         <select id="prefixcapacitance" name="prefixcapacitance" class="dropdown">

@@ -1,11 +1,9 @@
-body {
+/* body {
     background-image: url(../background.avif);
     background-position: center;
     border-radius: 10px;
     margin: auto;
 }
-
-
 
 .container {
         
@@ -47,7 +45,6 @@ input {
 
 .label {
     text-align: left;
-    display: block;
     font-size: 18px;
 }
 
@@ -80,3 +77,8 @@ display: block;
     margin-bottom: 15px;
     
     }
+
+.dropdown {
+    text-align: left;
+    display:inline
+}

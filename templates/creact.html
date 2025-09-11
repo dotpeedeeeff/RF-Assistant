@@ -8,46 +8,54 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
     </head>
     <body>
+        <header>
         <h1>Capacitive Reactance Calculator</h1>
         <p>Find the reactance value for a given frequency.</p>
-        <form action="home">
+        <form action="/">
             <button class="button">Home</button>
         </form> 
-        <form id="mainform" action="freq" method="post" name="inputForm">
+        </header>
+        <main>
+        <div class="container">
+        <form id="mainform" action="cresults" method="post" name="inputForm">
             <div class="input">
             <fieldset>
                 <legend>Input</legend>
-                <label for="capacitance">Capacitance</label>
-                <input required id="capacitance" name="capacitance" type="number" min="0" step="0.1" max="1000">
-                <label for="prefixcapacitance">C Units</label>
-                <select id="prefixcapacitance" name="prefixcapacitance">
-                    <option disabled value="mF">mF</option>
-                    <option value="uF">uF</option>
-                    <option value="nF">nF</option>
-                    <option value="pF" selected="selected">pF</option>
-                </select>             
-                <label for="Frequency">Frequency (kHz)</label>
-                <input id="frequency" name="frequency" type="number"> 
-                <input type="submit" value="Submit" id="submit"></button>              
+                <div class="reac_cap_in">
+                    <label for="capacitance" class="label">Capacitance</label>
+                    <input required id="capacitance" name="capacitance" type="number" min="0" step="0.1" max="1000">
+                </div>
+                <div class="input">
+                    <label for="suffixcapacitance" class="label">C Units</label>
+                    <select id="suffixcapacitance" name="suffixcapacitance" class="dropdown">
+                        <option disabled value="mF">mF</option>
+                        <option value="uF">uF</option>
+                        <option value="nF">nF</option>
+                        <option value="pF" selected="selected">pF</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <label for="Frequency" class="label">Frequency (kHz)</label>
+                    <input id="frequency" name="frequency" type="number" min="500" max="30000" step="5"> 
+                </div>     
+                <div class="input">
+                    <input type="submit" value="Submit" id="submit"></button>
+                </div>     
             </fieldset>
+            
         </div>
         <div class="output">
             <fieldset>
                 <legend>Output</legend>
-                <output>                 
+                <output>
+                    <p>{{capacitance}}</p>
+                    <p>{{frequency}}</p>                 
                     <p>{{message}}</p>
-
-                    <ul> 
-                        <!-- For loop logic of jinja template -->
-                        {%for i in range(0, len)%} 
-                          
-                            <li>{{output[i]}}</li> 
-                        {%endfor%} 
-                          
-                    </ul> 
                 </output>                
             </fieldset>
         </div>
         </form>
+        </div>
+        </main>
     </body>
 </html>

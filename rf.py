@@ -93,3 +93,10 @@ def final_frequency_calculcator(user_inductance, inductance_suffix, start_capaci
     final_array_out = prepare_final_output(stepped_capacitance_array, frequency_output_arr, capacitance_suffix)
     return final_array_out
 
+
+def capacitive_reactance_calculator(user_capacitance: float, capacitance_suffix: str, frequency: float):
+    farad_capacitance = convert_to_farads(user_capacitance, capacitance_suffix)
+    herz_frequency = frequency * 1000
+    capacitive_reactance = 1 / (2 * math.pi * herz_frequency * farad_capacitance)
+    capacitive_reactance = round(capacitive_reactance, 1)
+    return capacitive_reactance
