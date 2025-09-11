@@ -1,5 +1,6 @@
 import math
 
+
 def resonant_frequency_calc(inductance: float, capacitance: float) -> float:
     """
     Resonant frequency calculator.
@@ -35,6 +36,7 @@ def convert_to_henries(user_inductance: float, inductance_suffix: str) -> float:
         "uH": 1E-6,
         "mH": 1E-3
     }
+
     henry_inductance = user_inductance * (si_l_suffixes[inductance_suffix])
     return henry_inductance
 
@@ -44,11 +46,10 @@ def generate_capacitance_array(start_capacitance: int, stop_capacitance: int, ca
     Generate array of capacitances from start, stop and step inputs.
     """
     stepped_capacitance_array = []
-    current_capacitance = start_capacitance    
-    
+    current_capacitance = start_capacitance
     if capacitance_step == 0:
         return [start_capacitance]
-    
+
     if stop_capacitance < start_capacitance:
         return [start_capacitance]
 
@@ -68,7 +69,7 @@ def generate_frequency_array(stepped_capacitance_array: float, henry_inductance:
     for i in range(len(stepped_capacitance_array)):
         """
         Calculate frequency for each capacitance value in array.
-        """       
+        """
         current_capacitance_iteration = stepped_capacitance_array[i]
         current_capacitance_iteration = convert_to_farads(current_capacitance_iteration, capacitance_suffix)
         current_frequency_iteration = resonant_frequency_calc(henry_inductance, current_capacitance_iteration)
@@ -100,3 +101,48 @@ def capacitive_reactance_calculator(user_capacitance: float, capacitance_suffix:
     capacitive_reactance = 1 / (2 * math.pi * herz_frequency * farad_capacitance)
     capacitive_reactance = round(capacitive_reactance, 1)
     return capacitive_reactance
+
+def inductive_reactance_calculator(user_inductance: float, inductance_suffix: str, frequency: float):
+    henry_inductance = convert_to_henries(user_inductance, inductance_suffix)
+    herz_frequency = frequency * 1000
+    inductive_reactance = 2 * math.pi * herz_frequency * henry_inductance
+    inductive_reactance = round(inductive_reactance, 1)
+    return inductive_reactance
+
+
+def bandplan_lookup(hfband: str) -> tuple:
+
+    hfbandplan = {
+        '160m': (1810, 2000),
+        '80m': (3500, 3800),
+        '40m': (7000, 7200),
+        '30m': (10100, 10150),
+        '20m': (14000, 14350),
+        '17m': (18068, 18168),
+        '15m': (21000, 21450),
+        '12m': (24890, 24990),
+        '10m': (28000, 29700)
+    }
+    return hfbandplan[hfband]
+
+
+def resonant_capacitance_calc(user_inductance: float, user_frequency: int) -> float:
+
+    herz_frequency = user_frequency * 1000
+    resonant_capacitance = 1 / (((herz_frequency * 2 * math.pi) ** 2) * user_inductance)
+    resonant_capacitance = resonant_capacitance / 1E-12 #converts F to pF
+    return resonant_capacitance
+
+
+def band_capacitor_calculator(user_inductance: float, hfband: str) -> float:
+
+    henries_inductance = convert_to_henries(user_inductance, "uH")
+
+    frequency_bottom, frequency_top = bandplan_lookup(hfband)
+
+    capacitor_bottom = resonant_capacitance_calc(henries_inductance, frequency_top)
+    capacitor_bottom = str(round(capacitor_bottom)) + " pF"
+    capacitor_top = resonant_capacitance_calc(henries_inductance, frequency_bottom)
+    capacitor_top = str(round(capacitor_top)) + " pF"
+
+    return (capacitor_bottom, capacitor_top)
