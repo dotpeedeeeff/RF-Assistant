@@ -11,19 +11,17 @@
     <header>
         <h1>LC Frequency Calculator</h1>
         <p>Enter the Inductance, Capacitance and let the calculator work out the output frequency.</p>
-        <form action="/">
-            <button class="button">Home</button>
-        </form> 
-    </header>
+        <div class="homebutton">
+            <a href="/">Home</a>
+        </div>
+   </header>
     <main>
         <div class="container">
             <form id="mainform" action="freq" method="post" name="inputForm">
-                <div class="input">
-                    <fieldset>
-                        <legend>Input</legend>                
+                <div class="input">                               
                         <label for="inductance" class="label">Inductance (uH)</label>
                         <input required id="inductance" class="tfield" name="inductance" step="0.1" type="number" min="0" max="1000">
-                        
+                        <br>
                         <!-- <label for="prefixhenries" class="label">L Units</label>                
                         <select id="prefixhenries" name="prefixhenries" class="dropdown">                    
                             <option value="mH">mH</option>
@@ -32,13 +30,13 @@
                         
                         <label for="startcapacitance" class="label">Start Capacitance (pF)</label>
                         <input required id="startcapacitance" name="startcapacitance" type="number" min="1" step="1" max="1000" onchange="stopCheck()">
-                        
+                        <br>
                         <label for="stopcapacitance" class="label">End Capacitance (pF)</label>
                         <input id="stopcapacitance" name="stopcapacitance" type="number" value="0" min="0" step="1" max="1000" onchange="stopCheck()">
-                        
+                        <br>
                         <label for="capacitancestep" class="label">Capacitance Step</label>
                         <input id="capacitancestep" name="capacitancestep" type="number" min="0" value="0" step="1" max="1000" onchange="stepCheck()">
-                        
+                        <br>
                         <!-- <label for="prefixcapacitance" class="label">C Units</label>
                         <select id="prefixcapacitance" name="prefixcapacitance" class="dropdown">
                             <option disabled value="mF">mF</option>
@@ -49,26 +47,19 @@
                         <input type="submit" value="Submit" id="submit" class="button"></button>
                         <p id="stopcheck"></p>
                         <p id="stepcheck"></p>
-                    </fieldset>
-                </div>
-            <div class="output">
-                <fieldset>
-                    <legend>Output</legend>
-                    <output>                 
-                        <p>{{message}}</p>
-
-                        <ul> 
-                            <!-- For loop logic of jinja template -->
-                            {%for i in range(0, len)%} 
-                            
-                                <li>{{output[i]}}</li> 
-                            {%endfor%} 
-                            
-                        </ul> 
-                    </output>                
-                </fieldset>
-            </div>
+                    
+                </div>            
             </form>
+            <div class="textbox">               
+                <p>{{message}}</p>
+                <ul> 
+                <!-- For loop logic of jinja template -->
+                {%for i in range(0, len)%}                        
+                    {{output[i]}} 
+                        <li>{%endfor%}</li>
+                            
+                </ul>                            
+            </div>
         </div>
         
     </main>   

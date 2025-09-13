@@ -100,7 +100,7 @@ def freq_display():
 
 @app.route("/capband")
 def capband():
-    return render_template("capband.html", len=0, output=0)
+    return render_template("capbandstart.html", len=0, output=0)
 
 
 @app.route("/capresults", methods=["POST", "GET"])

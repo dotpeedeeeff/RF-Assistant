@@ -64,11 +64,3 @@ form {
 #submit:hover {
     border-color: blueviolet;
 }
-
-li::marker {
-    color: beige;
-}
-
-.menulink {
-    margin-bottom: 5px;
-}

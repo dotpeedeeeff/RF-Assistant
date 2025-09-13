@@ -9,24 +9,19 @@
     </head>
     <body>
         <header>
-        <h1>Capacitive Reactance Calculator</h1>
-        <p>Find the reactance value for a given frequency.</p>
-        <form action="/">
-            <button class="button">Home</button>
-        </form> 
-        </header>
+            <h1>Capacitive Reactance Calculator</h1>
+            <p>Find the reactance value for a given frequency.</p>
+            <div class="homebutton">
+                <a href="/">Home</a>
+            </div>
+       </header>
         <main>
         <div class="container">
         <form id="mainform" action="cresults" method="post" name="inputForm">
             <div class="input">
-            <fieldset>
-                <legend>Input</legend>
                 <div class="reac_cap_in">
                     <label for="capacitance" class="label">Capacitance</label>
                     <input required id="capacitance" name="capacitance" type="number" min="0" step="0.1" max="1000">
-                </div>
-                <div class="input">
-                    <label for="suffixcapacitance" class="label">C Units</label>
                     <select id="suffixcapacitance" name="suffixcapacitance" class="dropdown">
                         <option disabled value="mF">mF</option>
                         <option value="uF">uF</option>
@@ -34,27 +29,25 @@
                         <option value="pF" selected="selected">pF</option>
                     </select>
                 </div>
-                <div class="input">
+                
+                <div>
                     <label for="Frequency" class="label">Frequency (kHz)</label>
-                    <input id="frequency" name="frequency" type="number" min="500" max="30000" step="5"> 
+                    <input id="frequency" name="frequency" type="number" min="300" max="30000"> 
                 </div>     
-                <div class="input">
+                <div>
                     <input type="submit" value="Submit" id="submit"></button>
                 </div>     
             </fieldset>
             
         </div>
-        <div class="output">
-            <fieldset>
-                <legend>Output</legend>
-                <output>
-                    <p>{{capacitance}}</p>
-                    <p>{{frequency}}</p>                 
-                    <p>{{message}}</p>
-                </output>                
-            </fieldset>
-        </div>
+        
         </form>
+        <div class="textbox">
+            <p>{{capacitance}}</p>
+            <p>{{frequency}}</p>                 
+            <p>{{message}}</p>
+        </div>
+
         </div>
         </main>
     </body>

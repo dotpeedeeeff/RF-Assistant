@@ -8,22 +8,22 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
 
     </head>
-    <body>
-        <div class="container">
+    <header>
+        <div>
             <h1>RF Circuit Toolbox</h1>
             <p>A selection of tools to help with common RF calculations.</p>
-            <form action="lc">
-                <button class="button">LC Resonant Frequency</button>
-            </form>
-            <form action="creact">
-                <button class="button">Capacitative Reactance</button>
-            </form>
-            <form action="lreact">
-                <button class="button">Inductive Reactance</button>
-            </form>
-             <form action="capband">
-                <button class="button">Variable Capacitor</button>
-            </form>
         </div>
-    </body>
+        <div class="menulink">
+            <a href="/lc">LC Resonant Frequency</a>
+        </div>
+        <div class="menulink">
+            <a href="/creact">Capacitive Reactance</a>
+        </div>
+        <div class="menulink">
+            <a href="/lreact">Inductive Reactance</a>
+        </div>
+        <div class="menulink">
+            <a href="/capband">Variable Capacitor</a>
+        </div>
+    </header>
 </html>
