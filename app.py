@@ -5,14 +5,10 @@ app = Flask(__name__)
 app.secret_key = "dfkl2345"
 
 
-@app.route("/hello")
-def hello():
-    return render_template("test.html")
-
 
 @app.route("/lc")
 def lc():
-    return render_template("index.html", len=0, output=0)
+    return render_template("indexstart.html", len=0, output=0)
 
 
 @app.route("/")
@@ -22,7 +18,7 @@ def home():
 
 @app.route("/creact")
 def creact():
-    return render_template("creact.html", len=0, output=0)
+    return render_template("creactstart.html", len=0, output=0)
 
 
 @app.route("/cresults", methods=["POST", "GET"])
@@ -51,7 +47,7 @@ def cresults():
 
 @app.route("/lreact")
 def lreact():
-    return render_template("lreact.html", len=0, output=0)
+    return render_template("lreactstart.html", len=0, output=0)
 
 
 @app.route("/lresults", methods=["POST", "GET"])

@@ -72,3 +72,12 @@ li::marker {
 .menulink {
     margin-bottom: 5px;
 }
+
+#inductance {
+    min-width: 80px;
+    margin-left: 45px;
+}
+
+#frequency {
+    max-width: 128px;
+}

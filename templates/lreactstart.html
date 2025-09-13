@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inductive Reactance Calculator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+        <meta name="description" content="ind the inductive reactance for a given frequency.">
+    </head>
+    <body>
+        <header>
+            <h1>Inductive Reactance Calculator</h1>
+            <p>Find the inductive reactance for a given frequency.</p>
+            <div class="homebutton">
+                <a href="/">Home</a>
+            </div>
+        </header>
+        <main>
+           <div class="container">
+            <form id="mainform" action="lresults" method="post" name="inputForm">
+            <div class="input">
+                <label for="Inductance">Inductance</label>
+                <input required id="inductance" name="inductance" type="number" min="0" step="0.1" max="1000">
+                <select id="suffixinductance" name="suffixinductance">
+                    <option disabled value="H">H</option>
+                    <option value="mH">mH</option>
+                    <option value="uH" selected="selected">uH</option>
+                </select>             
+                <br>
+                <label for="Frequency">Frequency (kHz)</label>
+                <input id="frequency" name="frequency" type="number" min="300">
+                <br>
+                <input type="submit" value="Submit" id="submit"></button>              
+            
+        </div>          
+        </form> 
+        </div> 
+        </main>             
+    </body>
+</html>
