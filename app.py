@@ -8,7 +8,8 @@ app.secret_key = "dfkl2345"
 
 @app.route("/lc")
 def lc():
-    return render_template("indexstart.html", len=0, output=0)
+    status = "none"
+    return render_template("lcfreq.html", len=0, output=0, status=status)
 
 
 @app.route("/")
@@ -18,7 +19,8 @@ def home():
 
 @app.route("/creact")
 def creact():
-    return render_template("creactstart.html", len=0, output=0)
+    status = "none"
+    return render_template("creact.html", len=0, output=0, status=status)
 
 
 @app.route("/cresults", methods=["POST", "GET"])
@@ -47,7 +49,8 @@ def cresults():
 
 @app.route("/lreact")
 def lreact():
-    return render_template("lreactstart.html", len=0, output=0)
+    status = "none"
+    return render_template("lreact.html", len=0, output=0, status=status)
 
 
 @app.route("/lresults", methods=["POST", "GET"])
@@ -91,12 +94,14 @@ def freq_display():
     message = "For Inductance of " + str(user_inductance) + " uH"
     output = rf.final_frequency_calculcator(user_inductance, inductance_suffix, start_capacitance, stop_capacitance, capacitance_step, capacitance_suffix)
 
-    return render_template("index.html", len=len(output), output=output, message=message)
+    return render_template("lcfreq.html", len=len(output), output=output, message=message)
 
 
 @app.route("/capband")
 def capband():
-    return render_template("capbandstart.html", len=0, output=0)
+
+    status = "none"
+    return render_template("capband.html", len=0, output=0, status=status)
 
 
 @app.route("/capresults", methods=["POST", "GET"])

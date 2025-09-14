@@ -81,3 +81,10 @@ li::marker {
 #frequency {
     max-width: 128px;
 }
+
+#ghicon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
