@@ -9,7 +9,7 @@ header {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     background-color: beige;
     border-radius: 10px;
     max-width: 550px;
@@ -82,9 +82,20 @@ li::marker {
     max-width: 128px;
 }
 
-#ghicon {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    
+#page-container {
+    position: relative;
+    min-height: 98vh;
+    max-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;
+}
+
+#footer {
+    position: absolute;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 2.5rem;
+    text-align: center;
 }

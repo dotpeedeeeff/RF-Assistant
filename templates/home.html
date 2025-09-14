@@ -8,11 +8,13 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
 
     </head>
-    <header>
-        <div>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header>         
+        
             <h1>RF Circuit Toolbox</h1>
             <p>A selection of tools to help with common RF calculations.</p>
-        </div>
+        
         <div class="menulink">
             <a href="/lc">LC Resonant Frequency</a>
         </div>
@@ -25,11 +27,12 @@
         <div class="menulink">
             <a href="/capband">Variable Capacitor</a>
         </div>
-    </header>
-    <footer>
-    </footer>
-    <a href="https://github.com/dotpeedeeeff/RF-Assistant">
-    <img src="../static/gh.svg" width="25" height="25" id="ghicon">
-    </a>
-    </footer>
+            </header>
+        </div>
+        <footer id="footer">
+            <a href="https://github.com/dotpeedeeeff/RF-Assistant">
+                <img src="../static/gh.svg" width="24" height="24" id="ghicon">
+            </a>
+        </footer>
+    </div>
 </html>
