@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+    <head>
+        <script src="./static/resistor.js"></script>
+    </head>
+    <body>
+        <div>
+            <div id="left-wire" class="wire"></div>
+            <div id="left-end"></div>
+            <div id="first-band" class="color-band" onclick="firstClicker()" style="background-color: brown;"></div>
+            <div id="first-gap" class="gap"></div>
+            <div id="second-band" class="color-band" onclick="secondClicker()" style="background-color: black;"></div>
+            <div id="second-gap" class="gap"></div>
+            <div id="third-band" class="color-band" onclick="thirdClicker()" style="background-color: black;"></div>
+            <div id="wide-gap"></div>
+            <div id="fourth-band" class="color-band" onclick="fourthClicker()" style="background-color: gold;"></div>
+            <div id="right-end"></div>
+            <div id="right-wire" class="wire"></div>
+        </div>
+        <div id="text-output">
+            <h2 id="resistance-total">10Ω</h2>
+            <h2 id="tolerance-total">±5%</h2>
+        </div>
+    </body>
+</html>
+
+<style>
+
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wire {
+    background-color: black;
+    height: 6px;
+    width: 40px;
+}
+
+.color-band {
+    width: 8px;
+    height: 40px;
+}
+
+#left-end {
+    width: 20px;
+    height: 40px;
+    background-color: rgb(201, 179, 106);
+    border-radius: 10px 0 0 10px;
+}
+
+#right-end {
+    width: 20px;
+    height: 40px;
+    background-color: rgb(201, 179, 106);
+    border-radius: 0 10px 10px 0;
+}
+
+
+.gap {
+    width: 10px;
+    height: 40px;
+    background-color: rgb(201, 179, 106);
+}
+
+#wide-gap {
+    width: 30px;
+    height: 40px;
+    background-color: rgb(201, 179, 106);
+}
+
+#fourth-band {
+    background-color: gold;
+}
+
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 10px;
+}
+
+#textoutput {
+    justify-content: space-around;
+}
+</style>
