@@ -16,6 +16,10 @@ def lc():
 def home():
     return render_template("home.html", len=0, output=0)
 
+@app.route("/resistor")
+def resistor():
+    return render_template("resistor.html", len=0, output=0)
+
 
 @app.route("/creact")
 def creact():

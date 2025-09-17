@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Resistor Values</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Find the reactance value for a given frequency.">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/resist.css')}}">
+        <script src="{{url_for('static', filename='resistor.js')}}"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Resistor Values</h1>
+            <p>Click colored bands to change resistor value.</p>
+            <div class="homebutton">
+                <a href="/">Home</a>
+            </div>
+       </header>
+    <main>
+        <div class="container">
+            <div id="menu-container">
+            <div id="left-wire" class="wire"></div>
+            <div id="left-end"></div>
+            <div id="first-band" class="color-band" onclick="firstClicker()" style="background-color: brown;"></div>
+            <div id="first-gap" class="gap"></div>
+            <div id="second-band" class="color-band" onclick="secondClicker()" style="background-color: black;"></div>
+            <div id="second-gap" class="gap"></div>
+            <div id="third-band" class="color-band" onclick="thirdClicker()" style="background-color: black;"></div>
+            <div id="wide-gap"></div>
+            <div id="fourth-band" class="color-band" onclick="fourthClicker()" style="background-color: gold;"></div>
+            <div id="right-end"></div>
+            <div id="right-wire" class="wire"></div>
+            </div>
+            <div id="valuesoutput">
+                <h2 id="resistance-total" class="text-output">10Ω</h2>
+                <h2 id="tolerance-total" class="text-output">±5%</h2>
+            </div>
+        </div>
+    </main>
+    </body>
+</html>
