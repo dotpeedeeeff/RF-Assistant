@@ -18,7 +18,7 @@
        </header>
     <main>
         <div class="container">
-            <div id="menu-container">
+            <div id="menu-container" class="menu-container">
             <div id="left-wire" class="wire"></div>
             <div id="left-end"></div>
             <div id="first-band" class="color-band" onclick="firstClicker()" style="background-color: brown;"></div>
@@ -31,9 +31,31 @@
             <div id="right-end"></div>
             <div id="right-wire" class="wire"></div>
             </div>
-            <div id="valuesoutput">
+            <div class="values-output">
                 <h2 id="resistance-total" class="text-output">10Ω</h2>
                 <h2 id="tolerance-total" class="text-output">±5%</h2>
+            </div>
+            </div>
+        <div class="container">
+            <div id="4menu-container" class="menu-container">
+            <div id="4left-wire" class="wire"></div>
+            <div id="four-left-end"></div>
+            <div id="four-first-band" class="four-color-band" onclick="firstClickerFour()" style="background-color: brown;"></div>
+            <div id="4first-gap" class="fourgap"></div>
+            <div id="four-second-band" class="four-color-band" onclick="secondClickerFour()" style="background-color: black;"></div>
+            <div id="4second-gap" class="fourgap"></div>
+            <div id="four-third-band" class="four-color-band" onclick="thirdClickerFour()" style="background-color: black;"></div>
+            <div id="4third-gap" class="fourgap"></div>
+            <div id="four-fourth-band" class="four-color-band" onclick="fourthClickerFour()" style="background-color: silver;"></div>
+            <div id="four-wide-gap"></div>
+            <div id="four-fifth-band" class="four-color-band" onclick="fifthClickerFour()" style="background-color: gold;"></div>
+            <div id="four-right-end"></div>
+            <div id="4right-wire" class="wire"></div>
+            </div>
+            <div class="values-output">
+                <h2 id="four-resistance-total" class="text-output">1Ω</h2>
+                <h2 id="four-tolerance-total" class="text-output">±5%</h2>
+            </div>
             </div>
         </div>
     </main>

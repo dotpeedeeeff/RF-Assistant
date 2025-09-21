@@ -48,7 +48,7 @@ header {
     text-align: center;
 }
 
-#menu-container {
+.menu-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,10 +66,22 @@ header {
     height: 40px;
 }
 
+.four-color-band {
+    width: 8px;
+    height: 40px;
+}
+
 #left-end {
     width: 20px;
     height: 40px;
     background-color: rgb(201, 179, 106);
+    border-radius: 10px 0 0 10px;
+}
+
+#four-left-end {
+    width: 20px;
+    height: 40px;
+    background-color: rgb(134, 201, 228);
     border-radius: 10px 0 0 10px;
 }
 
@@ -80,6 +92,12 @@ header {
     border-radius: 0 10px 10px 0;
 }
 
+#four-right-end {
+    width: 20px;
+    height: 40px;
+    background-color: rgb(134, 201, 228);
+    border-radius: 0 10px 10px 0;
+}
 
 .gap {
     width: 10px;
@@ -87,8 +105,20 @@ header {
     background-color: rgb(201, 179, 106);
 }
 
-#wide-gap {
+.fourgap {
+    width: 10px;
+    height: 40px;
+    background-color: rgb(134, 201, 228);
+}
+
+#four-wide-gap {
     width: 30px;
+    height: 40px;
+    background-color: rgb(134, 201, 228);
+}
+
+#wide-gap {
+    width: 48px;
     height: 40px;
     background-color: rgb(201, 179, 106);
 }
@@ -99,11 +129,11 @@ header {
 
 .text-output {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 10px;    
+    margin: 10px 20px 10px 20px;    
     max-width: 20%;
 }
 
-#valuesoutput {
+.values-output {
     display: flex;
     justify-content: center;
       
